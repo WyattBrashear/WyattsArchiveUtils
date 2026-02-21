@@ -1,0 +1,9 @@
+!PATH|'source_dir/meow.py'
+print("hello world")
+!EOF
+!PATH|'source_dir/runfile'
+python3 meow.py
+!EOF
+!PATH|'source_dir/directory/hello'
+This is a text file for data testing in WAM
+!EOF
