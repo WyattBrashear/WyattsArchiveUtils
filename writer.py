@@ -26,6 +26,6 @@ with open(f"{args.output}.wam", 'ab') as f:
             file_text = file.read()
             f.write(f'{sum(1 for line in file)}\n"""\n'.encode("utf-8"))
             print(sum(1 for line in file))
-            print(file_text) #TODO: Fix the issue where it just writes the file as blank
+            print(file_text)
             f.write(file_text)
         f.write('\n"""\n!EOF\n---\n'.encode("utf-8"))
