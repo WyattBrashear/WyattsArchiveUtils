@@ -6,6 +6,9 @@ parser.add_argument('archive', help='path to the WAM file ')
 args = parser.parse_args()
 
 with open(args.archive, 'rb') as f:
+    prep_for_launch = False
+    lets_do_this_thing = False
+    needs_eof = False
     file_path = ''
     for line in f:
         line_bin = False
@@ -27,3 +30,5 @@ with open(args.archive, 'rb') as f:
                     file.write(b'')
                     file_path = line.decode().replace('!PATH|', '').replace('\n', '')
             if line.decode().startswith('!FILE_PAYLOAD'):
+                file_length = int(line.decode().replace('!FILE_PAYLOAD|', '').replace('\n', ''))
+                f
