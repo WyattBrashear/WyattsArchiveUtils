@@ -23,9 +23,19 @@ with open(f"{args.output}.wam", 'ab') as f:
         f.write(f'!FILE_PAYLOAD|'.encode("utf-8"))
         print(dirs_tobe[i])
         with open(dirs_tobe[i], 'rb') as file:
+            chunkie_choccie_chip = []
+            chunkie_choccie_chip_eaten = False
+            while not chunkie_choccie_chip_eaten:
+                chunk = file.read(8192)
+                if not chunk:
+                    chunkie_choccie_chip_eaten = True
+                    break
+                for byte in chunk:
+                    chunkie_choccie_chip.append(byte)
+            file.seek(0)
             file_text = file.read()
-            f.write(f'{sum(1 for line in file)}\n"""\n'.encode("utf-8"))
-            print(sum(1 for line in file))
+            f.write(f'{len(chunkie_choccie_chip)}\n"""\n'.encode("utf-8"))
+            print(chunkie_choccie_chip)
             print(file_text)
             f.write(file_text)
         f.write('\n"""\n!EOF\n---\n'.encode("utf-8"))

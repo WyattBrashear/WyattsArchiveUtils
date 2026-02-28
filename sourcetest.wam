@@ -1,6 +1,6 @@
 !DIRECTORY|source_dir
 !PATH|source_dir/meow.py
-!FILE_PAYLOAD
+!FILE_PAYLOAD|20
 """
 print("hello world")
 """
@@ -8,7 +8,7 @@ print("hello world")
 ---
 !DIRECTORY|source_dir
 !PATH|source_dir/runfile
-!FILE_PAYLOAD
+!FILE_PAYLOAD|15
 """
 python3 meow.py
 """
@@ -16,7 +16,7 @@ python3 meow.py
 ---
 !DIRECTORY|source_dir/directory
 !PATH|source_dir/directory/hello
-!FILE_PAYLOAD
+!FILE_PAYLOAD|43
 """
 This is a text file for data testing in WAM
 """
