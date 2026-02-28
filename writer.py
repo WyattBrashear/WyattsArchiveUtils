@@ -23,12 +23,9 @@ with open(f"{args.output}.wam", 'ab') as f:
         f.write(f'!FILE_PAYLOAD|'.encode("utf-8"))
         print(dirs_tobe[i])
         with open(dirs_tobe[i], 'rb') as file:
+            file_text = file.read()
             f.write(f'{sum(1 for line in file)}\n"""\n'.encode("utf-8"))
             print(sum(1 for line in file))
-            file_data = []
-            while chunk := file.read(8192):
-                file_data.append(chunk)
-                print(file_data)
-            print(''.join(file_data).encode())
-            f.write(''.join(file_data).encode())
+            print(file_text) #TODO: Fix the issue where it just writes the file as blank
+            f.write(file_text)
         f.write('\n"""\n!EOF\n---\n'.encode("utf-8"))
