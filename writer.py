@@ -19,10 +19,14 @@ with open(f"{args.output}.wam", 'w') as f:
 with open(f"{args.output}.wam", 'ab') as f:
     f.write("!DIRMAP".encode())
     is_dir = False
-    print(dirs_tobe)
-    print(files_dirs)
     for path in files_dirs:
         f.write(f"\n{path}".encode())
     f.write("\n!FILEMAP".encode())
     for path in dirs_tobe:
         f.write(f"\n{path}".encode())
+    f.write("\n!PAYLOAD".encode())
+    for path in dirs_tobe:
+        with open(path, 'rb') as f2:
+            file_contents = f2.read()
+        f.write(f"\n!FILE|{path}\n!_!\n".encode())
+        f.write(file_contents)

@@ -1,8 +1,37 @@
 !DIRMAP
 source_dir
 source_dir
+source_dir
 source_dir/directory
+source_dir/directory
+source_dir/directory/Nested_directory_test
 !FILEMAP
 source_dir/meow.py
 source_dir/runfile
 source_dir/directory/hello
+source_dir/directory/Nested_directory_test/multi_line_test
+!PAYLOAD
+!FILE|source_dir/meow.py
+!_!
+print("hello world")
+!FILE|source_dir/runfile
+!_!
+python3 meow.py
+!FILE|source_dir/directory/hello
+!_!
+This is a text file for data testing in WAM
+!FILE|source_dir/directory/Nested_directory_test/multi_line_test
+!_!
+How
+Much
+Wood
+Could
+A
+Woodchuck
+Chuck
+If
+A
+Woodchuck
+Could
+Chuck
+Wood
