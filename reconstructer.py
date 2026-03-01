@@ -1,10 +1,14 @@
 import os
 import argparse
+import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument('archive', help='path to the WAM file ')
+parser.add_argument('-b', '--benchmark', action='store_true', help="Start a timer for running a benchmark on the writer")
 args = parser.parse_args()
-
+start = 0
+if args.benchmark:
+    start = time.time()
 with open(args.archive, 'rb') as f:
     reading_filemap = False
     reading_dirmap = False
@@ -51,3 +55,6 @@ with open(args.archive, 'rb') as f:
                         file_writer.write(line)
         except:
             pass
+
+if args.benchmark:
+    print(f"Script successfully reconstructed data from {args.archive} in {time.time() - start:.2f}")
