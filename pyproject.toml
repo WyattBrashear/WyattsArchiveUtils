@@ -1,0 +1,26 @@
+[project]
+name = "wyattsarchiveutils"
+version = "1.0.2"
+description = "Wyatt's Archive Utils (Custom archive format)"
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Wyatt Brashear", email = "admin@wyattb.dev"}
+]
+
+[project.scripts]
+wau-writer = "writer.writer:main"
+wau-reconstructor = "reconstructer.reconstructer:main"
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[tool.hatch.build.targets.wheel]
+packages = ["writer", "reconstructer"]
+
+[dependency-groups]
+dev = [
+    "build>=1.4.0",
+    "twine>=6.2.0",
+]
